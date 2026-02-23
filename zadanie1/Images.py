@@ -31,10 +31,10 @@ cv2.imshow('Original', original_mosaic)
 # rozmery jedného obrázka v mozaike
 h, w = image1.shape[:2]
 
-# 1. časť mozaiky = horný-ľavý kvadrant (ROI selektor)
+# 1. časť mozaiky = horný-ľavý kvadrant
 cast = mosaic[0:h, 0:w]
 
-# 3x3 sharpening kernel (zvýrazní hrany, obraz bude "ostrejší")
+# 3x3 sharpening kernel
 kernel = np.array([[ 0, -1,  0],
                    [-1,  5, -1],
                    [ 0, -1,  0]])
@@ -49,14 +49,14 @@ Ak súčet = 0 → detekcia hrán
 # konvolúcia cez filter2D, padding riešime borderType
 cast_filtered = cv2.filter2D(cast, ddepth=-1, kernel=kernel, borderType=cv2.BORDER_REPLICATE)
 
-# zapíš späť priamo do už existujúcej mozaiky
+# upravený segment vložíme do existujúcej mozaiky
 mosaic[0:h, 0:w] = cast_filtered
 
 
 #-----------------------------------------------------Úloha 2
 cast2 = mosaic[0:h, w:2*w]
 
-# vytvor nový prázdny obraz (pozor - rozmery sa prehodia)
+# vytvor nový prázdny obraz
 rotated = np.zeros((w, h, 3), dtype=np.uint8)
 
 # ručné otočenie
