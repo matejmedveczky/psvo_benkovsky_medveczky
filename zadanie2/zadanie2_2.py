@@ -29,6 +29,7 @@ cv2.createTrackbar('pr2', 'Live', 95, 99, nothing)
 
 
 def is_right_angle_quadrilateral(approx, cosine_threshold=0.25):
+    # All four internal angles in a rectangle/square are ~90 degrees.
     pts = approx.reshape(4, 2).astype(np.float32)
     for i in range(4):
         p0 = pts[i]
