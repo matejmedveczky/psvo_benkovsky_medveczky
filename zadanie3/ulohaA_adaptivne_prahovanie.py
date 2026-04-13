@@ -3,7 +3,7 @@ import numpy as np
 
 percent = .30
 
-img = cv2.imread("chess_calibration_1.png")
+img = cv2.imread("chess_calibration_1.jpg")
 img = cv2.resize(img, (0, 0), None, percent, percent)
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
